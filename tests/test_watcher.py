@@ -15,8 +15,11 @@ def test_is_temp_file(name, expected):
     assert is_temp_file(Path(name)) is expected
 
 
-def test_handler_calls_callback(tmp_path, handler_callback):
+def test_handler_calls_callback(tmp_path, handler_callback, monkeypatch):
     calls, cb = handler_callback
+
+    monkeypatch.setattr(
+        "yoinked.core.watcher.wait_for_file_ready", lambda *args, **kwargs: True)
 
     handler = YoinkedHandler(cb)
 

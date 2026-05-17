@@ -17,7 +17,43 @@ TEMP_EXTENSIONS = {
 
 
 def is_temp_file(file_path: Path) -> bool:
-    return file_path.suffix.lower() in TEMP_EXTENSIONS
+    name = file_path.name.lower()
+
+    if name.startswith("unconfirmed"):
+        return True
+
+    if file_path.suffix.lower() in TEMP_EXTENSIONS:
+        return True
+
+    return False
+
+
+def wait_for_file_ready(file_path: Path, timeout=30, interval=0.5):
+    last_size = -1
+    stable = 0
+
+    for _ in range(int(timeout / interval)):
+        if not file_path.exists():
+            return False
+
+        try:
+            size = file_path.stat().st_size
+        except Exception:
+            time.sleep(interval)
+            continue
+
+        if size == last_size:
+            stable += 1
+        else:
+            stable = 0
+            last_size = size
+
+        if stable >= 3:
+            return True
+
+        time.sleep(interval)
+
+    return False
 
 
 # ----------------------------
@@ -29,17 +65,14 @@ class YoinkedHandler(FileSystemEventHandler):
         self.callback = callback
 
     def on_created(self, event):
-        if event.is_directory:
-            return
-
         file_path = Path(event.src_path)
 
-        # 1. ignore temp files
         if is_temp_file(file_path):
-            print(f"[IGNORED TEMP] {file_path.name}")
             return
 
-        # 2. pass to engine
+        if not wait_for_file_ready(file_path):
+            return
+
         self.callback(file_path.name)
 
 
