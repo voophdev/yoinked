@@ -1,0 +1,55 @@
+rules:
+
+  images:
+    priority: 10
+    extensions: [jpg, jpeg, png, gif, webp, bmp]
+    filename_contains: ["screenshot", "img_", "photo"]
+    move_to: Images/
+
+  videos:
+    priority: 10
+    extensions: [mp4, mkv, mov, avi, webm]
+    move_to: Videos/
+
+  audio:
+    priority: 10
+    extensions: [mp3, wav, flac, m4a]
+    move_to: Audio/
+
+  documents:
+    priority: 20
+    extensions: [pdf, docx, doc, xlsx, pptx, txt]
+    filename_contains: ["invoice", "report", "resume", "cv", "receipt"]
+    move_to: Documents/
+
+  installers:
+    priority: 5
+    extensions: [exe, msi, dmg, pkg, deb, apk]
+    filename_contains: ["setup", "installer", "install"]
+    move_to: Installers/
+
+  archives:
+    priority: 15
+    extensions: [zip, rar, 7z, tar, gz]
+    move_to: Compressed/
+
+  code:
+    priority: 30
+    extensions: [py, js, ts, java, go, html, css, cpp, c, json, yml, yaml]
+    filename_contains: ["dockerfile", "makefile"]
+    move_to: Code/
+
+  database:
+    priority: 25
+    extensions: [sql, dump, db, sqlite, bak]
+    move_to: Databases/
+
+  downloads_misc:
+    priority: 40
+    extensions: []
+    filename_contains: ["download", "file", "unnamed"]
+    move_to: Unsorted/
+
+  default:
+    priority: 100
+    move_to: Unsorted/

@@ -1,0 +1,26 @@
+interval_seconds: 3600
+
+retention:
+  images:
+    path: Images/
+    days: 7
+
+  documents:
+    path: Documents/
+    days: 30
+
+  installers:
+    path: Installers/
+    days: 3
+
+  archives:
+    path: Archives/
+    days: 14
+
+  code:
+    path: Code/
+    days: 90
+
+  default:
+    path: Unsorted/
+    days: 7
