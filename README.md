@@ -1,22 +1,21 @@
 # yoinked
 
-[![Python 6ge; 3.11](https://img.shields.io/badge/python-%3E%3D3.11-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-pytest-brightgreen.svg)](https://pytest.org)
+[![Python  3.11](https://img.shields.io/badge/python-%3E%3D3.11-blue.svg)](https://www.python.org/downloads/)
+[![Tests](https://img.shields.io/badge/tests-pytest-brightgreen.svg)](https://docs.pytest.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 your downloads folder went feral. this fixes it. 🪄
 
 Yoinked is a lightweight, local-first filesystem automation tool written in Python. It watches your Downloads folder in real time, sorts files into folders based on flexible YAML rules, and supports retention policies that archive old files. Built for people who want reliable automation without cloud or telemetry.
 
---
-
 **Quick links**
-- Features — see what it does
-- Architecture — how it’s wired
-- Install — get it running
-- Usage — examples and config
-- Roadmap & Contribute — how to help
-
+- [Features](#features)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration examples](#configuration-examples)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
 ## Features
 
 - Real-time watching of a directory (Downloads) using `watchdog`
@@ -196,12 +195,14 @@ We love PRs. Keep changes small and focused. Suggested workflow:
 2. Write tests for new behavior
 3. Open a PR with a clear description
 
-Check `CONTRIBUTING.md` for more details (coming soon).
+See [CONTRIBUTING.md](CONTRIBUTING.md) for more details (coming soon).
 
 ## License
 
-MIT — see the `LICENSE` file.
+MIT — see the [LICENSE](LICENSE) file.
 
 ---
 
 Made with ❤️ — local-first, privacy-first automation.
+
+Note: parts of this README and some project scaffolding were created with assistance from a large language model (LLM).
